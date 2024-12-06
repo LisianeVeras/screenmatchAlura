@@ -6,8 +6,12 @@ public class Series extends Title {
     private int seasonsEpisodes;
     private int durationEpisode;
 
-    private double sumOfSeriesRatings = 0;  // Para somar as avaliações da série
-    private int totalSeriesReviews = 0;     // Para contar o número de avaliações da série
+    private double sumOfSeriesRatings = 0;
+    private int totalSeriesReviews = 0;
+
+    public Series(String name, int yearOfRelease) {
+        super(name, yearOfRelease);
+    }
 
     // Getters and Setters
     public int getSeasons() {
@@ -72,4 +76,11 @@ public class Series extends Title {
         System.out.println("Binge-watch in " + getBingWatchTime() + " hours.");
         System.out.println("Series Average Rating: " + String.format("%.1f", rateReviews()));  // Formatar com uma casa decimal
     }
+
+    @Override
+    public String toString() {
+        return "Series: " + this.getName() + " (" + this.getYearOfRelease() + ")";
+    }
 }
+
+

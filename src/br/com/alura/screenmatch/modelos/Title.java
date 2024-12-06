@@ -1,6 +1,6 @@
 package br.com.alura.screenmatch.modelos;
 
-public class Title {
+public class Title implements Comparable<Title> {
     private String name;
     private int yearOfRelease;
     private boolean includedPlan;
@@ -8,7 +8,12 @@ public class Title {
     private int totalReviews;
     private int minutesDuration;
 
-   //getters
+    public Title(String name, int yearOfRelease) {
+        this.name = name;
+        this.yearOfRelease = yearOfRelease;
+    }
+
+    //getters
     public String getName() {
         return name;
     }
@@ -74,15 +79,17 @@ public class Title {
         totalReviews++;
     }
 
-
-    public double rateReviews() {
+        public double rateReviews() {
         if (totalReviews == 0) {
             System.out.println("No reviews");
             return 0;
         }
-        double average = (sumOfReviews / totalReviews);
-        System.out.println("Average rating: " + average);
+        double average = Math.round((sumOfReviews / totalReviews) * 10.0) / 10.0;
         return average;
     }
 
+    @Override
+    public int compareTo(Title anotherTitle) {
+        return this.getName().compareTo(anotherTitle.getName());
+    }
 }
